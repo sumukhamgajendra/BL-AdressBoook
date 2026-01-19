@@ -13,14 +13,16 @@ class Main:
             print()
 
             match choice:
-
+                # case 1 adds new contact to specified address book
                 case 1:
                     print("Add a new contact")
                     address_book_main.get_info(current_ab)
 
+                # case 2 displays all contacts in specified address book
                 case 2:
                     address_book_main.display_contacts(current_ab)
 
+                # case 3 checks if person with name exists and edits contact if exists in specified address book
                 case 3:
                     name = input("Enter the name of the person to edit: ")
                     pos = address_book_main.findByName(name, current_ab)
@@ -28,6 +30,8 @@ class Main:
                         address_book_main.edit_person(pos, current_ab)
                     else:
                         print("No contacts found")
+
+                # case 4 deletes a contact from the specified address book. If person doesnot exist gives error message
                 case 4:
                     name = input("Enter the name of the person to delete: ")
                     pos = address_book_main.findByName(name, current_ab)
@@ -37,14 +41,17 @@ class Main:
                     else:
                         print("No contacts found")
 
+                # case 5 adds multiple contacts to specified address book
                 case 5:
                     n = int(input("Enter number of persons to add: "))
                     for _ in range(n):
                         address_book_main.get_info(current_ab)
 
+                # case 6 adds multiple address books
                 case 6:
                     address_book_main.add_multiple_address_books()
 
+                # case 7 switches between address books
                 case 7:
                     print("Available address books:", list(address_book_main.address_book.keys()))
                     new_ab = input("Enter the name of the address book to switch to: ")
