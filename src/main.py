@@ -46,6 +46,8 @@ class Main:
                     n = int(input("Enter number of persons to add: "))
                     for _ in range(n):
                         address_book_main.get_info(current_ab)
+                        print()
+                        print("Entries left: ", n - _ - 1 )
 
                 # case 6 adds multiple address books
                 case 6:
@@ -83,8 +85,12 @@ class Main:
 
                 case 10:
                     print()
-                    print("Sort By name")
-                    address_book_main.sort_by_name(current_ab)
+                    print("select option: 1.sort by name 2.sort by city 3.sort by state 4.sort by zip")
+                    option = int(input("Enter your choice: "))
+                    if option < 1 or option > 4:
+                        print("Invalid choice")
+                        continue
+                    address_book_main.sort_by_name(current_ab, option)
 
                 case 11:
                     print("Exiting Main")

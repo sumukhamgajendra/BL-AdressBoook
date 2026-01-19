@@ -93,6 +93,10 @@ class AddressBook:
         count = self.search_obj.get_person_count_state(state_name)
         print(f"Number of persons in state '{state_name}': {count}")
 
-    def sort_by_name(self, current_ab):
-        self.address_book[current_ab].sort(key=lambda contact: contact.f_name)
+    def sort_by_name(self, current_ab, option):
+        option_list = ['f_name', 'city', 'state', 'zip_code']
+        print(f"Sorting by {option_list[option - 1]}")
+        self.address_book[current_ab].sort(key = lambda contact : contact.__getattribute__(option_list[option - 1]))
         self.display_contacts(current_ab)
+           
+
