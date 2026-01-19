@@ -1,5 +1,6 @@
 import models.Contacts
 import models.Search
+import models.FileIO
 
 class AddressBook:
     def __init__(self):
@@ -7,10 +8,17 @@ class AddressBook:
         self.address_book = {'default': []}
         # Creating an instance of Search class
         self.search_obj = models.Search.Search()
+        # Creating an instance of File object
+        self.file = models.FileIO.FIleIO()
+
 
     # method to add a contact to address book
     def add_contact(self, contact, ab_name):
         self.address_book[ab_name].append(contact)
+
+    # Pushing data into a text file
+    def push_to_file(self, contact, ab_name):
+        self.file.write_contact_to_file(contact, ab_name)
 
     # method to get contact info from user and adds it to address book
     def get_info(self, ab_name):
@@ -31,6 +39,7 @@ class AddressBook:
 
         self.search_obj.update_city_state_dict(f_name, city, state)
         self.add_contact(new_contact, ab_name)
+        self.push_to_file(new_contact, ab_name)
 
     # Method to display contacts
     def display_contacts(self, ab_name):
