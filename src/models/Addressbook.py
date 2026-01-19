@@ -1,9 +1,12 @@
 import models.Contacts
+import models.Search
 
 class AddressBook:
     def __init__(self):
         # A dictionary of address book maintained. 'default' will be the default address book
         self.address_book = {'default': []}
+        # Creating an instance of Search class
+        self.search_obj = models.Search.Search()
 
     # method to add a contact to address book
     def add_contact(self, contact, ab_name):
@@ -69,3 +72,12 @@ class AddressBook:
             else:
                 self.address_book[ab_name] = []
                 print(f"Address book '{ab_name}' added successfully.")
+
+    def search_person_by_city(self):
+        city_name = input("Enter city name: ")
+        self.search_obj.search_by_city(city_name)
+
+    def search_by_state(self):
+        state_name = input("Enter state name: ")
+        self.search_obj.search_by_state(state_name)
+

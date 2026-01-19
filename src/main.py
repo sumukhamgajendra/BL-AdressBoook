@@ -7,7 +7,7 @@ class Main:
         current_ab = 'default'
         while True:
             print(f"--------'{current_ab}' Address Book--------")
-            print("What operation you need to perform?: \n1.Add a contact \n2.Display contacts\n3.edit contact\n4.Delete contact\n5.Add multiple contacts\n6.Add multiple address books\n7.Switch address book\n8.Exit")
+            print("What operation you need to perform?: \n1.Add a contact \n2.Display contacts\n3.edit contact\n4.Delete contact\n5.Add multiple contacts\n6.Add multiple address books\n7.Switch address book\n8.search person by city or state\n9.Exit")
 
             choice = int(input("Enter your choice: "))
             print()
@@ -62,8 +62,19 @@ class Main:
                         print("Address book not found.")
 
                 case 8:
+                    print("Press 1 to search by city and 2 to search by state")
+                    ch = input("Enter your choice: ")
+                    if ch == '1':
+                        address_book_main.search_person_by_city()
+                    elif ch == '2':
+                        address_book_main.search_by_state()
+                    else:
+                        print("Invalid choice")
+
+                case 9:
                     print("Exiting the program.")
                     break
+                    
 
 if __name__ == "__main__":
 
