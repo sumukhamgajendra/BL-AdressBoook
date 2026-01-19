@@ -28,6 +28,8 @@ class AddressBook:
         phone = input("Phone Number: ")
         email = input("Email: ")
         new_contact = models.Contacts.Contact(f_name, l_name, city, state, zip_code, phone, email)
+        
+        self.search_obj.update_city_state_dict(f_name, city, state)
         self.add_contact(new_contact, ab_name)
 
     # Method to display contacts
