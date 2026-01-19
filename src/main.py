@@ -6,7 +6,7 @@ class Main:
         address_book_main = models.Addressbook.AddressBook()
         while True:
             print("Address Book")
-            print("What operation you need to perform?: \n1.Add a contact \n2.Display contacts\n3.edit contact\n4.Exit")
+            print("What operation you need to perform?: \n1.Add a contact \n2.Display contacts\n3.edit contact\n4.Delete contact\n5.Exit")
 
             choice = int(input("Enter your choice: "))
             print()
@@ -28,6 +28,16 @@ class Main:
                     else:
                         print("No contacts found")
                 case 4:
+                    name = input("Enter the name of the person to delete: ")
+                    pos = address_book_main.findByName(name)
+                    if pos is not None:
+                        del address_book_main.address_book['default'][pos]
+                        print(f"Contact {name} deleted successfully.")
+                    else:
+                        print("No contacts found")
+
+                case 5:
+                    print("Exiting the Address Book application.")
                     break
 
 if __name__ == "__main__":
