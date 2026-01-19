@@ -28,7 +28,7 @@ class AddressBook:
         phone = input("Phone Number: ")
         email = input("Email: ")
         new_contact = models.Contacts.Contact(f_name, l_name, city, state, zip_code, phone, email)
-        
+
         self.search_obj.update_city_state_dict(f_name, city, state)
         self.add_contact(new_contact, ab_name)
 
@@ -82,4 +82,14 @@ class AddressBook:
     def search_by_state(self):
         state_name = input("Enter state name: ")
         self.search_obj.search_by_state(state_name)
+
+    def get_count_by_city(self):
+        city_name = input("Enter city name: ")
+        count = self.search_obj.get_person_count(city_name)
+        print(f"Number of persons in city '{city_name}': {count}")
+
+    def get_count_by_state(self):
+        state_name = input("Enter state name: ")
+        count = self.search_obj.get_person_count_state(state_name)
+        print(f"Number of persons in state '{state_name}': {count}")
 

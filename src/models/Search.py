@@ -26,3 +26,13 @@ class Search:
     def update_city_state_dict(self, f_name, city, state):
         self.state.setdefault(state, []).append(f_name)
         self.city.setdefault(city, []).append(f_name)
+
+    def get_person_count(self, city_name):
+        if city_name in self.city:
+            return len(self.city[city_name])
+        return 0
+    
+    def get_person_count_state(self, state_name):
+        if state_name in self.state:
+            return len(self.state[state_name])
+        return 0

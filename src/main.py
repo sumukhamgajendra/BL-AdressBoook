@@ -7,7 +7,7 @@ class Main:
         current_ab = 'default'
         while True:
             print(f"--------'{current_ab}' Address Book--------")
-            print("What operation you need to perform?: \n1.Add a contact \n2.Display contacts\n3.edit contact\n4.Delete contact\n5.Add multiple contacts\n6.Add multiple address books\n7.Switch address book\n8.search person by city or state\n9.Exit")
+            print("What operation you need to perform?: \n1.Add a contact \n2.Display contacts\n3.edit contact\n4.Delete contact\n5.Add multiple contacts\n6.Add multiple address books\n7.Switch address book\n8.search person by city or state\n9.To count By city or state\n10.Exit")
 
             choice = int(input("Enter your choice: "))
             print()
@@ -72,7 +72,17 @@ class Main:
                         print("Invalid choice")
 
                 case 9:
-                    print("Exiting the program.")
+                    print("Press 1 to get count by city and 2 to get count by state")
+                    ch = input("Enter your choice: ")
+                    if ch == '1':
+                        address_book_main.get_count_by_city()
+                    elif ch == '2':
+                        address_book_main.get_count_by_state()
+                    else:
+                        print("Invalid choice")
+
+                case 10:
+                    print("Exiting main")
                     break
                     
 
