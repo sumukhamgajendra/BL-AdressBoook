@@ -15,7 +15,11 @@ class AddressBook:
     # method to add a contact to address book
     def add_contact(self, contact, ab_name):
         self.address_book[ab_name].append(contact)
+        
+        self.push_to_file(contact, ab_name)
         self.save_to_csv(ab_name)
+        self.save_to_json(ab_name)
+
 
 
     # Pushing data into a text file
@@ -24,6 +28,10 @@ class AddressBook:
 
     def save_to_csv(self, ab_name):
         self.file.save_to_csv(self.address_book[ab_name], ab_name)
+
+    def save_to_json(self, ab_name):
+        self.file.save_to_json(self.address_book[ab_name], ab_name)
+        
 
 
     # method to get contact info from user and adds it to address book
